@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Asistencias</title>
+    <link rel="stylesheet" href="./assets/asistencia.css">
+</head>
+<body>
+    <header class="header">
+        <div class="instructor-profile">
+            <div class="profile-photo">
+                <img src="./assets/img/309dae116b3580f10cea9ed6e5e5ac08.jpg" alt="Foto de Wilson Rojas" width="50" height="50">
+            </div>
+            <div class="instructor-info">
+                <h3>Wilson Rojas</h3>
+                <p>Rol: Instructor</p>
+                <p>documento: 2346233</p>
+            </div>
+        </div>
+        <div class="logo">
+            <img src="./assets/img/sena.jpg" alt="Logo de la institución" width="60" height="60">
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="navigation">
+            <a href="index.html" class="nav-item active">Asistencias</a>
+            <a href="./reportes.html" class="nav-item">Reportes</a>
+        </div>
+        
+        <div class="module">
+            <h2 class="module-title">Asistencias</h2>
+            <div class="create-attendance">
+                <button class="btn" id="createAttendanceBtn">Crear Nueva Asistencia</button>
+            </div>
+            <h3>Asistencias Pendientes de Verificación</h3>
+            <div class="attendance-list">
+                <div class="attendance-item" onclick="openAttendanceModal('Clase Programación Web', '2025-05-13')">
+                    <div>
+                        <strong>Clase Programación Web</strong>
+                        <p>13 de Mayo, 2025 - 28 estudiantes</p>
+                    </div>
+                </div>
+                <div class="attendance-item" onclick="openAttendanceModal('Taller de Bases de Datos', '2025-05-12')">
+                    <div>
+                        <strong>Taller de Bases de Datos</strong>
+                        <p>12 de Mayo, 2025 - 25 estudiantes</p>
+                    </div>
+                </div>
+                <div class="attendance-item" onclick="openAttendanceModal('Clase de Algoritmos', '2025-05-10')">
+                    <div>
+                        <strong>Clase de Algoritmos</strong>
+                        <p>10 de Mayo, 2025 - 30 estudiantes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal para verificar asistencia -->
+    <div class="modal" id="attendanceModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('attendanceModal')">&times;</button>
+            <h2 class="modal-title">Verificar Asistencia: <span id="attendanceModalTitle"></span></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Estudiante</th>
+                        <th>ID</th>
+                        <th>Marcó Asistencia</th>
+                        <th>Verificar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ana Martínez</td>
+                        <td>EST-001</td>
+                        <td>Sí</td>
+                        <td>
+                            <input type="checkbox" checked>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Carlos López</td>
+                        <td>EST-002</td>
+                        <td>Sí</td>
+                        <td>
+                            <input type="checkbox" checked>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>María Gómez</td>
+                        <td>EST-003</td>
+                        <td>No</td>
+                        <td>
+                            <input type="checkbox">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Juan Pérez</td>
+                        <td>EST-004</td>
+                        <td>Sí</td>
+                        <td>
+                            <input type="checkbox" checked>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Laura Sánchez</td>
+                        <td>EST-005</td>
+                        <td>Sí</td>
+                        <td>
+                            <input type="checkbox" checked>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="modal-footer">
+                <button class="btn btn-verify" onclick="saveAttendance()">Verificar y Guardar</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal para crear asistencia -->
+    <div class="modal" id="createAttendanceModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('createAttendanceModal')">&times;</button>
+            <h2 class="modal-title">Crear Nueva Asistencia</h2>
+            <form id="createAttendanceForm">
+                <div class="form-group">
+                    <label for="classTitle">Título de la Clase:</label>
+                    <input type="text" id="classTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="classDate">Fecha:</label>
+                    <input type="date" id="classDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="classGroup">Grupo:</label>
+                    <select id="classGroup" required>
+                        <option value="">Seleccionar grupo</option>
+                        <option value="grupo1">Grupo 1 - Desarrollo Web</option>
+                        <option value="grupo2">Grupo 2 - Bases de Datos</option>
+                        <option value="grupo3">Grupo 3 - Programación Básica</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="classDuration">Duración (minutos):</label>
+                    <input type="number" id="classDuration" required>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button class="btn" onclick="createAttendance()">Iniciar Asistencia</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="assets/.js"></script>
+</body>
+</html>
