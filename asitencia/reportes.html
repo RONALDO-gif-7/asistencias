@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes - Sistema de Gestión de Asistencias</title>
+    <link rel="stylesheet" href="./assets/reportes.css">
+</head>
+<body>
+  <header class="header">
+        <div class="instructor-profile">
+            <div class="profile-photo">
+                <img src="./assets/img/309dae116b3580f10cea9ed6e5e5ac08.jpg" alt="Foto de Wilson Rojas" width="50" height="50">
+            </div>
+            <div class="instructor-info">
+                <h3>Wilson Rojas</h3>
+                <p>Rol: Instructor</p>
+                <p>documento: 2346233</p>
+            </div>
+        </div>
+        <div class="logo">
+            <img src="./assets/img/sena.jpg" alt="Logo de la institución" width="60" height="60">
+        </div>
+    </header>
+
+    <!-- Menú de navegación -->
+    <div class="container">
+        <nav class="navigation">
+            <a href="./asistencia.html" class="nav-item">Asistencias</a>
+            <a href="reportes.html" class="nav-item active">Reportes</a>
+        </nav>
+
+        <!-- Filtros de búsqueda -->
+        <section class="module">
+            <h2 class="module-title">Generar Reporte</h2>
+            <form id="filterForm" class="filter-form">
+                <div class="form-group">
+                    <label for="courseNumber">Número de Curso:</label>
+                    <input type="text" id="courseNumber" placeholder="Ej. 101" required>
+                </div>
+                <div class="form-group">
+                    <label for="reportDate">Fecha (día/mes/año):</label>
+                    <input type="date" id="reportDate" required>
+                </div>
+                <button type="submit" class="btn">Buscar</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Modal emergente -->
+    <div class="modal" id="reportModal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModal">×</button>
+            <h2 class="modal-title">Reporte de Asistencias</h2>
+            <div id="reportData">
+                <!-- Aquí se inyectan los registros -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-download" id="downloadBtn">Descargar Reporte</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./assets/reportes.js"></script>
+</body>
+</html>
